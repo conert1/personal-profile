@@ -102,7 +102,7 @@ canvas {
 }
 main{
   position: absolute;
-  color: aliceblue;
+  color: rgb(157, 167, 175);
   height: 50px;
 }
 body{

@@ -1,3 +1,4 @@
+alert(" k k k k k");
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -44,8 +45,9 @@ scene.add(cube);
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 const spaceTexture = new THREE.TextureLoader().load('pics/images.jpeg');
-const moon = new THREE.TextureLoader().load("pics/moon.jpeg")
-const pic = new THREE.TextureLoader().load("pics/picc.png")
+const moon = new THREE.TextureLoader().load("./pics/moon.jpeg");
+// console.log("PICTURES HERE")
+const pic = new THREE.TextureLoader().load("/pics/picc.png");
 scene.background = spaceTexture;
 
 const jj =new THREE.Mesh(
