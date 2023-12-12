@@ -47,7 +47,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 const spaceTexture = new THREE.TextureLoader().load('pics/images.jpeg');
 const moon = new THREE.TextureLoader().load("./pics/moon.jpeg");
 // console.log("PICTURES HERE")
-const pic = new THREE.TextureLoader().load("/pics/picc.png");
+const pic = new THREE.TextureLoader().load("pics/picc.png");
 scene.background = spaceTexture;
 
 const jj =new THREE.Mesh(
