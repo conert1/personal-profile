@@ -14,7 +14,7 @@ renderer.render(scene, camera);
 
  const geometry = new THREE.TorusGeometry(7, 2, 12, 80);
  const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
-const torus = new THREE.Mesh(geometry, material);
+// const torus = new THREE.Mesh(geometry, material);
 
 // scene.add(torus);
 const PointLight = new THREE.PointLight(0xffffff);
@@ -45,11 +45,10 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 const spaceTexture = new THREE.TextureLoader().load('pics/images.jpeg');
 const moon = new THREE.TextureLoader().load("./pics/moon.jpeg");
-// console.log("PICTURES HERE")
 const pic = new THREE.TextureLoader().load("pics/picc.png");
 scene.background = spaceTexture;
 
-const jj =new THREE.Mesh(
+const roundmoon =new THREE.Mesh(
   new THREE.SphereGeometry(3,32,32),
   
   new THREE.MeshBasicMaterial({map:moon})
@@ -62,22 +61,22 @@ const picture = new THREE.Mesh(
 )
 
 
-scene.add(jj);
+scene.add(roundmoon);
 scene.add(picture)
 
 
-jj.position.z = 30;
-jj.position.setX(-10);
+roundmoon.position.z = 30;
+roundmoon.position.setX(-10);
 
 picture.position.setX(20);
 
 function moveCamera(){
   const t = document.body.getBoundingClientRect().top;
   // requestAnimationFrame( animate);
-  jj.rotation.x += 0.75;
-  picture.rotation.x += 0.4;
-  picture.rotation.y += 0.4;
-  picture.rotation.z += 0.4;
+  roundmoon.rotation.x += 0.75;
+  picture.rotation.x += 0.2;
+  picture.rotation.y += 0.2;
+  picture.rotation.z += 0.2;
   // console.log("weeeee")
   // console.log(jj.rotation.x)
   // camera.position.z = t * -0.01; // Adjust the camera position based on scroll
@@ -87,6 +86,13 @@ function moveCamera(){
   // }
   // jj.rotation.y += 0.075;
   // jj.rotation.z += 0.05;  
+    // requestAnimationFrame( animate);
+  // torus.rotation.x += 0.01;
+  // torus.rotation.y += 0.005;
+  // torus.rotation.z += 0.01;
+  
+  controls.update();
+  renderer.render(scene, camera);
   console.log(t);
   camera.updateProjectionMatrix();
   
@@ -95,13 +101,13 @@ function moveCamera(){
 document.body.onscroll = moveCamera;
 
 function animate(){
-  requestAnimationFrame( animate);
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  // requestAnimationFrame( animate);
+  // // torus.rotation.x += 0.01;
+  // // torus.rotation.y += 0.005;
+  // // torus.rotation.z += 0.01;
   
-  controls.update();
-  renderer.render(scene, camera);
+  // controls.update();
+  // renderer.render(scene, camera);
 }
 
 animate()

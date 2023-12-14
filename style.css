@@ -100,19 +100,35 @@ canvas {
   top: 0;
   left: 0;
 }
+
+.bg-custom{
+  background-color: transparent;
+  /* box-shadow: rgb(0, 0, 0) 5px 4px 4px 4px; */
+}
+.nav-item a:hover{
+   
+  background: #9c9c9c;
+  border-radius: 20%;
+  box-shadow: 0 0 10px #cccaca, 0 0 40px #beb3b3, 0 0 80px #a59e9e;    
+  transition: 0.2s;
+  
+}
+
+
 main{
   position: absolute;
   color: rgb(157, 167, 175);
-  height: 50px;
+  width: 100%;
+  text-align: center;
 }
 body{
-  /* text-align: center; */
-  padding-left: 30%;
+  text-align: center;
+  /* padding-left: 30%; */
   /* width: 100%; */
   margin: 0;
   /* display: flex; */
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* place-items: center; */
+  /* min-width: 320px;
+  min-height: 100vh; */
   /* height: 50px; */
 }

@@ -3,16 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./style.css">
-    <script src="three.js"></script>
-    <script src="orbitcontrols.js"></script>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+    <script src="./js/three.js"></script>
+    <script src="./js/orbitcontrols.js"></script>
     
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>js web</title>
   </head>
+  
   <body>
+   <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-custom">
+        
+        <div class="container">
+  
+          <a class="navbar-brand" href="index.html">
+            logo</a>
+            <div class="headd">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto"  style="display: flex; gap: 40px;">
+              <li class="nav-item">
+                  <a class="nav-link" href="now.html#foForm">About</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="now.html#foForm">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="prices.html">Contacts</a>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </nav>
+    </header>
     <canvas id="bg"></canvas>
-
+    
     <main>
       <header>
         <h1>C</h1>
@@ -78,7 +109,7 @@
     </main>
     
     <!-- <script type="text/javascript" src="./main.js"></script> -->
-    <script src="main.js"></script>
+    <script src="./js/main.js"></script>
     
   </body>
 </html>
