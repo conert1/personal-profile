@@ -1,3 +1,4 @@
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -43,7 +44,22 @@ scene.add(cube);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
+// const rockGeometry = new THREE.IcosahedronGeometry(1,7);
+// rockGeometry.vertices.forEach(vertex => {
+//   const noise = 0.1;
+//   vertex.x += Math.random()*noise-noise*0.2;
+//   vertex.y += Math.random()*noise-noise*0.5;
+//   vertex.z += Math.random()*noise-noise*0.1;
+// });
+
+// const rockMaterial = new THREE.MeshPhongMaterial({color: 0x808080});
+// const rockMesh = new THREE.Mesh(rockGeometry, rockMaterial);
+// scene.add(rockMesh);
+
+
 const spaceTexture = new THREE.TextureLoader().load('pics/images.jpeg');
+const dayTexture = new THREE.TextureLoader().load('pics/pi.jpeg');
+const rock = new THREE.TextureLoader().load('./pics/rock.jpeg');
 const moon = new THREE.TextureLoader().load("./pics/moon.jpeg");
 const pic = new THREE.TextureLoader().load("pics/picc.png");
 scene.background = spaceTexture;
@@ -54,6 +70,14 @@ const roundmoon =new THREE.Mesh(
   new THREE.MeshBasicMaterial({map:moon})
 
 );
+const theRock =new THREE.Mesh(
+  // new THREE.SphereGeometry(3,32,32),
+  new THREE.SphereGeometry(10,6,32, 56),
+  // new THREE.bo
+  
+  new THREE.MeshBasicMaterial({map:rock})
+
+);
 
 const picture = new THREE.Mesh(
   new THREE.BoxGeometry(7,7,7),
@@ -61,19 +85,24 @@ const picture = new THREE.Mesh(
 )
 
 
-scene.add(roundmoon);
+// scene.add(roundmoon);
 scene.add(picture)
 
 
-roundmoon.position.z = 30;
+// roundmoon.position.z = 30;
 roundmoon.position.setX(-10);
+theRock.position.setX(-15);
+
 
 picture.position.setX(20);
 
 function moveCamera(){
+  // scene.add(roundmoon);
   const t = document.body.getBoundingClientRect().top;
   // requestAnimationFrame( animate);
-  roundmoon.rotation.x += 0.75;
+  roundmoon.rotation.x += 0.1;
+  theRock.rotation.x += 0.1;
+  theRock.rotation.y += 0.2;
   picture.rotation.x += 0.2;
   picture.rotation.y += 0.2;
   picture.rotation.z += 0.2;
@@ -94,8 +123,19 @@ function moveCamera(){
   controls.update();
   renderer.render(scene, camera);
   console.log(t);
-  camera.updateProjectionMatrix();
-  
+
+  if(t<= -1600){
+      scene.remove(roundmoon);
+      scene.background = dayTexture; 
+      scene.add(theRock);
+      // moon = rock;
+      
+  }else{
+    scene.remove(theRock);
+    scene.background = spaceTexture;
+    scene.add(roundmoon);
+  }
+  camera.updateProjectionMatrix();  
 }
 
 document.body.onscroll = moveCamera;
@@ -111,3 +151,5 @@ function animate(){
 }
 
 animate()
+
+
