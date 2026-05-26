@@ -131,12 +131,7 @@ p{
   display: inline-block;
 
 
-  /* width: 70%; */
-  /* margin-left: 200px; */
-  /* margin: 20px; */
-  /* background-image: linear-gradient(90deg, rgba(134, 134, 134, 0.45), rgba(146, 146, 146, 0.1)); */
-  /* border-radius: 20%; */
-  /* transition: transform 0.3s ease; */
+
 }
 .tech-stack:hover {
   /* transform: scale(1.1);  */
@@ -162,17 +157,18 @@ p{
 
 
 .box{
+
   height: fit-content;
   margin-top: 10%;
-  box-sizing: border-box;
-  border-radius: 10%;
+  /* box-sizing: border-box; */
+  border-radius: 120px;
   position: relative;
   height: 100%;
   width: 80%;
   margin-left: 10%;
   overflow: hidden;
- 
 }
+
 .icon{
   border-radius: 20%;
   position: absolute;
@@ -221,7 +217,7 @@ p{
   height: fit-content;
   margin-top: 10%;
   box-sizing: border-box;
-  border-radius: 10%;
+  border-radius: 120px;
   position: relative;
   height: 100%;
   width: 80%;
