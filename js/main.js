@@ -62,6 +62,8 @@ const dayTexture = new THREE.TextureLoader().load('pics/pi.jpeg');
 const rock = new THREE.TextureLoader().load('./pics/rock.jpeg');
 const moon = new THREE.TextureLoader().load("./pics/moon.jpeg");
 const pic = new THREE.TextureLoader().load("pics/picc.png");
+const nodeStone = new THREE.TextureLoader().load("./pics/nodejs.png");
+
 scene.background = spaceTexture;
 
 const roundmoon =new THREE.Mesh(
@@ -70,6 +72,16 @@ const roundmoon =new THREE.Mesh(
   new THREE.MeshBasicMaterial({map:moon})
 
 );
+
+const roundNode =new THREE.Mesh(
+  new THREE.SphereGeometry(5,50,50),
+  
+  new THREE.MeshBasicMaterial({map:nodeStone})
+
+);
+
+
+
 const theRock =new THREE.Mesh(
   // new THREE.SphereGeometry(3,32,32),
   new THREE.SphereGeometry(10,6,32, 56),
@@ -93,6 +105,8 @@ scene.add(picture)
 roundmoon.position.setX(-10);
 theRock.position.setX(-15);
 
+roundNode.position.setX(-19);
+
 
 picture.position.setX(20);
 
@@ -106,9 +120,11 @@ function moveCamera(){
   picture.rotation.x += 0.2;
   picture.rotation.y += 0.2;
   picture.rotation.z += 0.2;
-  // console.log("weeeee")
-  // console.log(jj.rotation.x)
-  // camera.position.z = t * -0.01; // Adjust the camera position based on scroll
+
+  roundNode.rotation.x += 0.2;
+  roundNode.rotation.y += 0.2;
+  roundNode.rotation.z += 0.2;
+
   camera.fov = 0 + t * 0.1;
   // if (jj.rotation.x > 100){
   //   scene.background =moon;
@@ -128,12 +144,14 @@ function moveCamera(){
       scene.remove(roundmoon);
       scene.background = dayTexture; 
       scene.add(theRock);
+      scene.add(roundNode);
       // moon = rock;
       
   }else{
     scene.remove(theRock);
     scene.background = spaceTexture;
     scene.add(roundmoon);
+    scene.add(roundNode);
   }
   camera.updateProjectionMatrix();  
 }
