@@ -126,15 +126,7 @@ function moveCamera(){
   roundNode.rotation.z += 0.2;
 
   camera.fov = 0 + t * 0.1;
-  // if (jj.rotation.x > 100){
-  //   scene.background =moon;
-  // }
-  // jj.rotation.y += 0.075;
-  // jj.rotation.z += 0.05;  
-    // requestAnimationFrame( animate);
-  // torus.rotation.x += 0.01;
-  // torus.rotation.y += 0.005;
-  // torus.rotation.z += 0.01;
+
   
   controls.update();
   renderer.render(scene, camera);
