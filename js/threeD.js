@@ -19,7 +19,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Ground
-const groundGeometry = new THREE.PlaneGeometry(200, 200);
+const groundGeometry = new THREE.PlaneGeometry(50, 50);
 const groundMaterial = new THREE.MeshStandardMaterial({
 color: 0x228b22
 });
@@ -30,7 +30,7 @@ ground.position.y = 0;
 scene.add(ground);
 
 // Grid helper (helps visualize movement)
-const grid = new THREE.GridHelper(200, 100);
+const grid = new THREE.GridHelper(50, 50);
 scene.add(grid);
 
 // Lighting
@@ -63,35 +63,52 @@ window.addEventListener("keyup", (event) => {
 keys[event.key.toLowerCase()] = false;
 });
 
-// Animation loop
+
+
+
+// // Animation loop
 function animate() {
-requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-if (keys["w"] || keys["arrowup"]) {
-    player.position.z -= speed;
-}
+    const moveSpeed = 0.15;
+    const turnSpeed = 0.04;
 
-if (keys["s"] || keys["arrowdown"]) {
-    player.position.z += speed;
-}
+    // Turn left and right
+    if (keys["a"] || keys["arrowleft"]) {
+        player.rotation.y += turnSpeed;
+    }
 
-if (keys["a"] || keys["arrowleft"]) {
-    player.position.x -= speed;
-}
+    if (keys["d"] || keys["arrowright"]) {
+        player.rotation.y -= turnSpeed;
+    }
 
-if (keys["d"] || keys["arrowright"]) {
-    player.position.x += speed;
-}
+    // Move forward and backward
+    if (keys["w"] || keys["arrowup"]) {
+        player.translateZ(-moveSpeed);
+    }
 
-// Camera follows player
-camera.position.x = player.position.x;
-camera.position.z = player.position.z + 10;
-camera.position.y = player.position.y + 5;
+    if (keys["s"] || keys["arrowdown"]) {
+        player.translateZ(moveSpeed);
+    }
 
-camera.lookAt(player.position);
+    // Ground boundaries
+    player.position.x = Math.max(-25, Math.min(25, player.position.x));
+    player.position.z = Math.max(-25, Math.min(25, player.position.z));
 
-renderer.render(scene, camera);
+    // Camera follows player rotation
+    const cameraOffset = new THREE.Vector3(0, 5, 10);
 
+    const rotatedOffset = cameraOffset.clone()
+        .applyAxisAngle(
+            new THREE.Vector3(0, 1, 0),
+            player.rotation.y
+        );
+
+    camera.position.copy(player.position).add(rotatedOffset);
+
+    camera.lookAt(player.position);
+
+    renderer.render(scene, camera);
 }
 
 animate();
